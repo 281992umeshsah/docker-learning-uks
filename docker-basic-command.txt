@@ -1,0 +1,51 @@
+Docker Basic Command:
+
+
+docker run nginx  <- It create container and run the conatiner on ec2 or other system.
+docker run ubuntu sleep 5 <-  This is command use for runninh 5 second only and after that stop the conatiner.
+docker exec nginx cat /etc/hosts # This is commandis use for cat hosts file without entering under container.
+
+
+docker ps <- This is command help to see all running conatiner along with process details. 
+docker ps -a <- This command use to show docker ps plus exited conatilner. 
+
+dokcer run kodecloud/simple-webapp # run without detach
+dokcer run -d kodecloud/simple-webapp # run and  detach
+docker attach <conatilnerID> # 
+
+docker stop $(docker ps -q)
+docker rm $(docker ps -aq)
+
+docker run -d --name webapp nginx:1.14-alpine 
+
+docker rmi $(docker images -q)
+docker rmi -f $(docker images -q)
+
+dokcer run -p 80:5000 kodecloud/simple-webapp
+run -d --name blue-app -p 38282:8080 kodekloud/simple-webapp:blue
+
+docker run -d --name mysql-db -e MYSQL_ROOT_PASSWORD=db_pass123 mysql
+docker run -d --name blue-app -p 38282:8080 -e APP_COLOR=blue kodekloud/simple-webapp
+
+# Commands & Entrypoint
+
+
+
+
+#docker composer
+https://docs.docker.com/compose/
+
+https://docs.docker.com/engine/reference/commandline/compose/
+
+https://github.com/dockersamples/example-voting-app
+
+services:
+  redis:
+    image: redis:alpine
+  clickcounter:
+    image: kodekloud/click-counter
+    ports:
+    - 8085:5000
+version: '3.8'
+
+
